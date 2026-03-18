@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ResumeDocument",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "template",
+    "createdAt",
+    "updatedAt",
+    "basicInfo",
+    "sectionOrder",
+    "sections",
+    "education",
+    "experience",
+    "projects",
+    "skills"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "template": { "type": "string", "enum": ["ats", "business", "modern"] },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "basicInfo": {
+      "type": "object",
+      "required": ["fullName", "headline", "phone", "email", "address", "website", "summary"],
+      "properties": {
+        "fullName": { "type": "string" },
+        "headline": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "website": { "type": "string" },
+        "summary": { "type": "string" }
+      }
+    },
+    "sectionOrder": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["education", "experience", "projects", "skills"] }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "visible"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "visible": { "type": "boolean" }
+        }
+      }
+    },
+    "education": { "type": "array", "items": { "type": "object" } },
+    "experience": { "type": "array", "items": { "type": "object" } },
+    "projects": { "type": "array", "items": { "type": "object" } },
+    "skills": { "type": "array", "items": { "type": "object" } }
+  }
+}
